@@ -1,0 +1,35 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="sparklineWithSojourn.css">
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	
+	<script src="sparklineWithSojourn.js"></script>	
+</head>
+<body>
+	<!-- holds the plot! -->
+	<div id="thePlot"></div>
+
+<script>
+// just some random data to populate lines. Create these any way you want. The
+// data structure is that a line is an array of pairs. The first number is the
+// x-coordinate. The second is the y-coordinate.
+// The plot function takes an array of lines as the input data.
+var lines=[];
+for (var i=0;i<10;i++){
+	var line=[];
+	for (var j=0;j<100;j++){
+		line.push([j,0.1*j + (Math.random()-0.5)*0.05*j+0.05*j*(i-4.5)+0.1*(i-4.5)]);		
+	}
+	lines.push(line);
+}
+
+DrawSparkline("#thePlot",lines,
+                    {
+                        xlabel:"time",
+                        ylabel:"magnitude",
+                        title:"Multiple lines (click for sojourn time)"
+                    })
+
+</script>
+</body>
+</html>

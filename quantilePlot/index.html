@@ -1,0 +1,37 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="quantilePlot.css">
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	
+	<script src="quantilePlot.js"></script>	
+</head>
+<body>
+	<!-- holds the plot! -->
+	<div id="thePlot"></div>
+
+<script>
+// just some random data to populate lines. Create these any way you want. The
+// data structure is that a line is an array of pairs. The first number is the
+// x-coordinate. The second is the y-coordinate.
+// The plot function takes an array of lines as the input data.
+
+// this time we create the quantiles by hand, but these should be calculated quantities.
+var lines=[];
+for (var i=0;i<7;i++){
+	var line=[];
+	for (var j=0;j<100;j++){
+		line.push([j,j*0.1*(i+1)]);		
+	}
+	lines.push(line);
+}
+
+DrawQuantilePlot("#thePlot",lines,
+                    {
+                        xlabel:"time",
+                        ylabel:"magnitude",
+                        title:"An example quantile plot"
+                    })
+
+</script>
+</body>
+</html>
